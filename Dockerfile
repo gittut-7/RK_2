@@ -10,7 +10,7 @@ WORKDIR ~/workspace/projects/suptertask
 RUN git clone https://github.com/niko-2112/suptertask.git .
 
 RUN cmake -H. -B_build -DCMAKE_INSTALL_PREFIX=_install -DBUILD_TESTS=ON
-RUN cmake —build _build —target install
-RUN cmake —build _build —target test
+RUN cmake —build _build --target install
+RUN cmake —build _build --target test
 
 #ENTRYPOINT ./demo
