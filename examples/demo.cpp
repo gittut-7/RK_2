@@ -1,4 +1,4 @@
-#include "cos.h"
+#include "alpha.h"
 
 int main(){
     return 0;

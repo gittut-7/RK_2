@@ -7,7 +7,7 @@ RUN apt update
 RUN apt install -yy git g++ cmake vim
 RUN mkdir -p ~/workspace/projects/suptertask
 WORKDIR ~/workspace/projects/suptertask
-RUN git clone https://github.com/niko-2112/suptertask.git .
+RUN git clone https://github.com/gittut-7/RK_2.git .
 
 RUN cmake -H. -B_build -DCMAKE_INSTALL_PREFIX=_install -DBUILD_TESTS=ON
 RUN cmake --build _build --target install
