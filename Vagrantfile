@@ -1,13 +1,4 @@
 
-$script = <<-SCRIPT
-apt install -yy gcc g++ cmake git vim
-mkdir -p ~/suptertask
-cd ~/suptertask
-git clone https://github.com/gittut-7/rk3
-cmake -H. -B_build -DCMAKE_INSTALL_PREFIX=_install -DBUILD_TESTS=ON
-cmake --build _build --target install
-SCRIPT
-
 Vagrant.configure("2") do |config|
 
   config.vagrant.plugins = ["vagrant-vbguest"]
