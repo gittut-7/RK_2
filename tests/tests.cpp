@@ -1,8 +1,8 @@
 
 
 #include <gtest/gtest.h>
-#include "alpha.h"
+#include "count.h"
 
-TEST(TEST, ALPHA){
-   EXPECT_TRUE(true);
+TEST(TEST, COUNT){
+   EXPECT_EQ(count_("irjr"), 4);
 }

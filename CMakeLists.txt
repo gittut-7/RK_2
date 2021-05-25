@@ -12,21 +12,21 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 option(BUILD_EXAMPLES "Build examples" ON)
 option(BUILD_TESTS "Build tests" ON)
 
-project(alpha)
-set(ALPHA_VERSION_MAJOR 0)
-set(ALPHA_VERSION_MINOR 1)
-set(ALPHA_VERSION_PATCH 0)
-set(ALPHA_VERSION_TWEAK 0)
-set(ALPHA_VERSION
-        ${ALPHA_VERSION_MAJOR}.${ALPHA_VERSION_MINOR}.${ALPHA_VERSION_PATCH}.${ALPHA_VERSION_TWEAK})
-set(ALPHA_VERSION_STRING "v${ALPHA_VERSION}")
+project(count)
+set(COUNT_VERSION_MAJOR 0)
+set(COUNT_VERSION_MINOR 1)
+set(COUNT_VERSION_PATCH 0)
+set(COUNT_VERSION_TWEAK 0)
+set(COUNT_VERSION
+        ${COUNT_VERSION_MAJOR}.${COUNT_VERSION_MINOR}.${COUNT_VERSION_PATCH}.${COUNT_VERSION_TWEAK})
+set(COUNT_VERSION_STRING "v${COUNT_VERSION}")
 
 hunter_add_package(GTest)
 find_package(GTest CONFIG REQUIRED)
 
-add_library(alpha STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/alpha.cpp)
+add_library(count STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/count.cpp)
 
-target_include_directories(alpha PUBLIC
+target_include_directories(count PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
         $<INSTALL_INTERFACE:include>
         )
@@ -35,22 +35,22 @@ if(BUILD_EXAMPLES)
     file(GLOB EXAMPLE_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/examples/*.cpp")
     foreach(EXAMPLE_SOURCE ${EXAMPLE_SOURCES})
         get_filename_component(EXAMPLE_NAME ${EXAMPLE_SOURCE} NAME_WE)
-        add_executable(${EXAMPLE_NAME} ${EXAMPLE_SOURCE} include/alpha.h sources/alpha.cpp)
-        target_link_libraries(${EXAMPLE_NAME} alpha)
+        add_executable(${EXAMPLE_NAME} ${EXAMPLE_SOURCE} include/count.h sources/count.cpp)
+        target_link_libraries(${EXAMPLE_NAME} count)
         install(TARGETS ${EXAMPLE_NAME}
                 RUNTIME DESTINATION bin
                 )
     endforeach(EXAMPLE_SOURCE ${EXAMPLE_SOURCES})
 endif()
 
-install(TARGETS alpha
-        EXPORT alpha-config
+install(TARGETS count
+        EXPORT count-config
         ARCHIVE DESTINATION lib
         LIBRARY DESTINATION lib
         )
 
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ DESTINATION include)
-install(EXPORT alpha-config DESTINATION cmake)
+install(EXPORT count-config DESTINATION cmake)
 
 if(BUILD_TESTS)
     enable_testing()

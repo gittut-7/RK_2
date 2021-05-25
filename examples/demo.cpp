@@ -1,4 +1,4 @@
-#include "alpha.h"
+#include "count.h"
 
 int main(){
     return 0;
